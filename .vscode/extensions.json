@@ -6,7 +6,6 @@
                         "ms-python.vscode-pylance", 
                         "ms-python.python", 
                         "ms-python.debugpy", 
-                        "ms-python.vscode-python-envs",
-                        "anthropic.claude-code"
+                        "ms-python.vscode-python-envs"
                       ]
 }

@@ -1,8 +1,8 @@
-# CLAUDE.md — DS 1001: Foundations of Data Science
+# copilot-instructions.md — DS 1001: Foundations of Data Science
 
 University of Virginia · School of Data Science
 
-**For the student reading this:** you don't have to do anything with this file except keep it in your project folder. It sits at the top level of your `ds1001-<lastname>` folder, and Claude reads it automatically every time you start a conversation about this project — in the Claude desktop app or in the terminal. It tells Claude what class this is, how you're supposed to learn in it, and how your folder is organized. You can read it. You can't break it by looking at it.
+**For the student reading this:** you don't have to do anything with this file except keep it in your .github folder in your project. It sits at the top level of your `ds1001-<lastname>` folder, and Copilot reads it automatically every time you start a conversation about this project — in the Copilot desktop app or in the terminal. It tells Copilot what class this is, how you're supposed to learn in it, and how your folder is organized. You can read it. You can't break it by looking at it.
 
 ---
 
@@ -65,28 +65,34 @@ The portable version, which you should be willing to repeat: **use AI where you 
 This is the cockpit layout from Lecture 3. Every instrument has a fixed place. Hold the student to it — if they ask where to save something, this is the answer.
 
 ```
-ds1001-lastname/
-|-- .venv/                  the project's private copy of Python (never edited by hand)
-|-- .vscode/
-|   `-- settings.json       tells VS Code which Python to use
-|-- data/
-|   |-- raw/                exactly what was downloaded — never edited
-|   `-- processed/          anything cleaned or reshaped, rebuilt by running code
-|-- notebooks/              numbered in run order: 01_explore.ipynb, 02_clean.ipynb
-|-- .gitignore              what never gets committed
-|-- requirements.txt        the exact package versions this project needs
-|-- pyproject.toml          project settings (used in some assignments)
-`-- README.md               what this project is and how to run it
+DS1001-LABS-Projects/
+|-- .github/                                project-specific GitHub configuration
+|   `-- copilot-instructions.md            instructions for AI and project workflow
+|-- .gitignore                             files that will not be committed
+|-- .vscode/                               editor configuration for this project
+|   |-- extensions.json                    recommended VS Code extensions for the project
+|   `-- settings.json                      tells VS Code which Python to use
+|-- .venv/                                 local Python environment for this project (if present)
+|-- data/                                  project datasets and derived outputs
+|   |-- raw/                               downloaded source files; never edited by hand
+|   `-- processed/                         cleaned or transformed data created by code
+|-- LABS-04_Systems.ipynb                  main lab notebook
+|-- LICENSE                                project license
+|-- README.md                              project overview and usage notes
+|-- requirements.txt                       exact Python package versions used
+`-- ...                                    other project files should stay in the repo root when appropriate
 ```
 
 Rules to enforce, gently but every time:
 
-- **Nothing in `data/raw/` is ever edited by hand.** If the raw file has a typo, the fix belongs in code that writes a clean copy to `data/processed/`. This is how the work stays reproducible — how someone else, or the student in three months, can get the same result.
-- **Notebooks are for looking, not for building.** Exploring, plotting, checking. Reusable logic that gets copied between notebooks belongs in a `.py` file that gets imported.
-- **Number notebooks in the order they run,** and make sure a notebook still works when re-run from the top. A notebook that only works if you run the cells in a secret order isn't finished.
-- **Nothing important lives in Downloads,** on the Desktop loose, or in a temporary folder. The project folder is the project.
-- **Files that start with a dot are configuration, not content.** They're hidden by default and read automatically by other software. Explain that when it comes up rather than treating it as obvious.
-- **If the student asks for a new file or folder that doesn't fit this layout,** say where it should go and why, before creating it.
+- **Nothing in `data/raw/` is ever edited by hand.** If the raw data needs fixing, do it in code and write a cleaned copy to `data/processed/` instead.
+- **Treat notebooks as analysis, not as the final home of reusable logic.** If code is used more than once, move it into a `.py` file or a clean script and import it.
+- **Keep the repository root organized.** Project documents like `README.md`, `LICENSE`, and `requirements.txt` belong here, alongside the main notebook or other top-level project artifacts.
+- **Preserve reproducibility.** If a dataset or package dependency is needed for the project, document it clearly so someone can rerun the work later.
+- **Do not scatter important work outside the project folder.** Keep files in this repo rather than in Downloads, Desktop, or temporary folders.
+- **Files that start with a dot are configuration, not content.** They are part of the project setup and should not be treated as data or analysis output.
+- **If a new file or folder does not fit this structure,** explain why it belongs there before creating it.
+- **Use the repo’s actual artifacts as the guide.** This project includes the notebook, the data folders, the license, the requirements file, and the GitHub configuration, so new additions should match that pattern when possible.
 
 ---
 
